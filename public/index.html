@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja" ng-app="testApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>testcafe test sample</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+
+<body>
+  <test-app></test-app>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+  <!-- angularjs component -->
+  <script>
+    !(function() {
+    'use strict';
+
+    angular.module('testApp', []).component('testApp', {
+      controller: TestAppCtrl,
+      template:
+        `<div>
+          <h1>check test</h1>
+          <div aria-label="クイズ">
+            <p>今は西暦2020年である</p>
+            <button type="button" aria-label="マル" ng-click="$ctrl.answer(true)">
+              ◯
+            </button>
+            <button type="button" aria-label="バツ" ng-click="$ctrl.answer(false)">
+              ×
+            </button>
+            <div role="dialog">
+              <span ng-if="$ctrl.isCorrectAnswer">正解</span>
+              <span ng-if="$ctrl.isCorrectAnswer === false">残念</span>
+            </div>
+          </div>
+
+          <p>ナビ要素</p>
+          <!-- nav 要素であれば role 不要だが role + aria-label での検証 -->
+          <nav role="navigation" aria-label="リンク一覧">
+            <ul>
+              <li>
+                <a href="/" aria-label="トップへ">トップへ</a>
+              </li>
+              <li>
+                <a href="https://www.google.co.jp/" aria-label="Google">Google</a>
+              </li>
+            </ul>
+          </nav>
+          <nav role="navigation" aria-label="ページ内リンク">
+            <ul>
+              <li>
+                <a href="#top" aria-label="トップへ">トップへ</a>
+              </li>
+              <li>
+                <a href="#google" aria-label="Google">Google</a>
+              </li>
+            </ul>
+          </nav>
+        </div>`
+    });
+
+    function TestAppCtrl() {
+    }
+
+    TestAppCtrl.prototype.answer = function(answerValue) {
+      this.isCorrectAnswer = answerValue;
+    }
+  })();
+  </script>
+</body>
+</html>

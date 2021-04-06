@@ -4,13 +4,14 @@
   "description": "testing with accessibility values",
   "main": "index.js",
   "scripts": {
-    "start":  "npm run serve | npm run test",
+    "start": "npm run serve | npm run test",
     "serve": "http-server ./public -a localhost -p 3000",
     "test": "testcafe chrome index.js"
   },
   "author": "mitsu-ki",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/testcafe": "^4.3.1",
     "http-server": "^0.12.3",
     "testcafe": "^1.13.0"
   }

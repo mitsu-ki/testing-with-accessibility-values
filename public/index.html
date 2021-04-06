@@ -31,7 +31,7 @@
             <button type="button" aria-label="バツ" ng-click="$ctrl.answer(false)">
               ×
             </button>
-            <div role="dialog">
+            <div role="dialog" aria-label="クイズ結果">
               <span ng-if="$ctrl.isCorrectAnswer">正解</span>
               <span ng-if="$ctrl.isCorrectAnswer === false">残念</span>
             </div>
